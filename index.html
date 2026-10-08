@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="mn"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e9"><title>little date ✿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<div class="ambient a"></div><div class="ambient b"></div><div class="noise"></div>
+<main class="phone"><header><a class="brand">l<span>✿</span></a><span id="progress">01 — 04</span></header>
+<section class="view active" data-view="0">
+<div class="art"><div class="sun"></div><div class="cup"><div class="foam">♡</div><div class="cupbody"></div></div><span class="spark">✳</span><span class="leaf"></span></div>
+<p class="kicker">A tiny plan for us</p><h1>Let’s have a<br><em>little date.</em></h1>
+<p class="intro">Кофе, тухтай яриа, бас хамтдаа<br>өнгөрүүлэх жаахан цаг. ☕</p>
+<button class="main" id="begin">Болзоогоо төлөвлөе <span>↗</span></button><p class="micro">no rush, just good company</p></section>
+<section class="view" data-view="1"><p class="kicker">01 / say hello</p><h2>Эхлээд<br><em>нэрээ хэлээрэй.</em></h2><p class="hint">Энэ урилгыг хэнд зориулж байгаагаа мэдмээр байна 🤎</p>
+<label class="namebox"><span>ТАНЫ НЭР</span><input id="guestName" maxlength="32" placeholder="Нэрээ энд бичээрэй"></label>
+<button class="main" id="nameNext">Үргэлжлүүлэх <span>→</span></button><button class="back">← Буцах</button></section>
+<section class="view" data-view="2"><p class="kicker">02 / pick a day</p><h2 id="greeting">Тэгвэл<br><em>хэзээ уулзах вэ?</em></h2><p class="hint">Өөрт тохирох өдрөө сонгоорой.</p>
+<div class="label">ӨДӨР СОНГОХ</div><div class="days">
+<button class="day" data-day="Saturday"><span>✿</span><strong>Бямба</strong><small>Saturday</small></button>
+<button class="day" data-day="Sunday"><span>✿</span><strong>Ням</strong><small>Sunday</small></button></div>
+<div class="label">ЦАГ СОНГОХ</div><div class="times">
+<button class="time" data-time="10:00">10:00</button><button class="time" data-time="12:00">12:00</button>
+<button class="time" data-time="14:00">14:00</button><button class="time" data-time="16:00">16:00</button></div>
+<button class="main" id="review">Урилгаа харах <span>→</span></button><button class="back">← Буцах</button></section>
+<section class="view" data-view="3"><div class="stamp">♡</div><p class="kicker">03 / one little plan</p>
+<h2>Тэгвэл<br><em>тохирлоо, <span id="finalName">найз аа</span>.</em></h2><p class="hint">Энэ өдрийг жаахан онцгой болгоё.</p>
+<div class="ticket"><div class="tickethead"><span>LITTLE DATE CLUB</span><span>NO. 001</span></div><div class="icons">☕ <small>+</small> 🌿</div>
+<div class="details"><div><small>ӨДӨР</small><strong id="finalDay">Бямба</strong></div><div><small>ЦАГ</small><strong id="finalTime">14:00</strong></div></div>
+<div class="ticketfoot">coffee · conversation · good vibes</div></div>
+<button class="main" id="finish">Гоё доо ♡ <span>✦</span></button><button class="back" id="edit">Сонголтоо өөрчлөх</button>
+<p class="micro" id="note">Энэ бол урилгын загвар — сонголт сервер рүү илгээгдэхгүй.</p></section>
+<footer>made with a little love <span>♡</span></footer></main><script src="script.js"></script></body></html>
