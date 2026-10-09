@@ -1,95 +1,12 @@
 <!doctype html>
-<html lang="mn">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Хамтдаа ♡</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main class="book">
-<div class="progress"><span id="progressBar"></span></div>
-
-<section class="page active" id="page1">
-  <div class="forest-bg"></div><div class="fire-glow"></div>
-  <div class="story-card intro">
-    <div class="chapter">✦ Бидний жижигхэн түүх ✦</div>
-    <div class="camp-scene">
-      <div class="moon">☾</div><div class="tree tree-left">♣</div><div class="tree tree-right">♣</div>
-      <div class="lantern">🏮</div><div class="pot">☕</div><div class="cat">🐱</div>
-      <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span>
-    </div>
-    <h1>Кофе &amp; Хөгжим</h1>
-    <p>Жаахан хөгжим,<br>сайхан кофе, хамтдаа өнгөрөөх цаг.</p>
-    <button class="wood-btn" data-next="2">Эхэлье ♡</button>
-  </div>
-</section>
-
-<section class="page" id="page2">
-  <div class="forest-bg forest2"></div>
-  <div class="story-card invite">
-    <div class="chapter">✦ 2. Зөвшөөрөл ✦</div>
-    <div class="cute-scene">
-      <div class="gem">💎</div><div class="heart-face">♡</div><div class="little-star">★</div>
-      <div class="character girl">🧒</div><div class="character boy">🧑</div>
-    </div>
-    <h2>Хөөрхөн минь! ♡</h2>
-    <p>Орой хамтдаа цагийг<br>гоё өнгөрүүлэх үү?</p>
-    <div class="answer-row"><button class="wood-btn yes" id="yes">Тэгье! ♡</button><button class="no" id="no">Үгүй</button></div>
-    <div class="no-note" id="noNote"></div>
-  </div>
-</section>
-
-<section class="page parchment-page" id="page3">
-  <div class="story-card calendar-card">
-    <div class="chapter dark">✦ 3. Уулзах өдрийг сонгох ✦</div>
-    <h2>Хэзээ уулзах вэ?</h2><p>Хоёуланд маань тохирох өдрөө сонгоорой.</p>
-    <div class="calendar">
-      <div class="calendar-head">♡ Энэ долоо хоног ♡</div>
-      <div class="week"><span>ДА</span><span>МЯ</span><span>ЛХ</span><span>ПҮ</span><span>БА</span><span>БЯ</span><span>НЯ</span></div>
-      <div class="dates">
-        <button disabled>1</button><button disabled>2</button><button disabled>3</button><button disabled>4</button><button disabled>5</button>
-        <button data-day="Бямба">6</button><button data-day="Ням">7</button>
-        <button disabled>8</button><button disabled>9</button><button disabled>10</button><button disabled>11</button><button disabled>12</button>
-        <button data-day="Бямба">13</button><button data-day="Ням">14</button>
-        <button disabled>15</button><button disabled>16</button><button disabled>17</button><button disabled>18</button><button disabled>19</button>
-        <button data-day="Бямба">20</button><button data-day="Ням">21</button>
-      </div>
-    </div>
-    <div class="selected-line">Сонгосон: <b id="dayValue">—</b></div>
-    <button class="wood-btn dark-btn" id="dayNext" disabled>Цагаа сонгох →</button>
-  </div>
-</section>
-
-<section class="page parchment-page" id="page4">
-  <div class="story-card activity-card">
-    <div class="chapter dark">✦ 4. Цаг &amp; хөгжилдөх ✦</div>
-    <h2>Хамтдаа юу хийх вэ?</h2><p>Цагийг сонгоод жижигхэн адал явдлаа эхлүүлье.</p>
-    <div class="activity-grid">
-      <button class="activity" data-time="17:00" data-title="Кофе & Ном"><div class="activity-art">☕</div><strong>Кофе &amp; Ном</strong><small>17:00</small></button>
-      <button class="activity" data-time="18:30" data-title="Урлаг & Гар урлал"><div class="activity-art">🎨</div><strong>Урлаг &amp; Гар урлал</strong><small>18:30</small></button>
-      <button class="activity" data-time="20:00" data-title="Оройн зугаалга"><div class="activity-art">🏮</div><strong>Оройн зугаалга</strong><small>20:00</small></button>
-    </div>
-    <div class="selected-line">Сонгосон: <b id="activityValue">—</b></div>
-    <button class="wood-btn dark-btn" id="finish" disabled>Төгсгөх →</button>
-  </div>
-</section>
-
-<section class="page" id="page5">
-  <div class="sunset-bg"></div><div class="vignette"></div><div class="falling-leaves" id="leaves"></div>
-  <div class="story-card ending">
-    <div class="chapter">✦ 5. Удахгүй ✦</div>
-    <div class="hands">🤝</div>
-    <h2>Хөөрхөн минь! ♡</h2>
-    <p class="big">Өнөө орой<br>тэсээд хүлээгээрэй.</p>
-    <div class="final-note"><span id="finalDay">Бямба</span><i>•</i><span id="finalTime">17:00</span><small id="finalActivity">Кофе &amp; Ном</small></div>
-    <p>Сонголт хийсэнд баярлалаа.<br><b>Удахгүй уулзацгаая! ♡</b></p>
-  </div>
-</section>
-</main>
-<script src="script.js"></script>
-</body>
-</html>
+<html lang="mn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f1e2"><title>Coffee Date ♡</title><link rel="stylesheet" href="style.css"></head>
+<body><main class="app">
+<header><span>☕ little coffee date</span><span id="counter">01 / 05</span></header>
+<section class="screen active" data-n="0"><i class="flower">✿</i><p class="eyebrow">A LITTLE INVITATION</p><h1>Кофе уух<br>уу? <em>♡</em></h1><p class="sub">Сайн кофе, сайхан яриа,<br>жаахан өөр тухтай цаг.</p>
+<div class="scene cafe"><div class="sun"></div><div class="plant">❧</div><div class="person p1"><b>•ᴗ•</b><i></i><span></span></div><div class="table">☕<small>〰</small></div><div class="person p2"><b>•ᴗ•</b><i></i><span></span></div><div class="cat">🐈</div><label>♡</label></div>
+<div class="buttons"><button class="primary" id="yes">Тэгье ♡</button><button id="no">Үгүй</button></div><p class="hint" id="hint">нэг кофе л шүү дээ… 👀</p></section>
+<section class="screen" data-n="1"><i class="flower">✿</i><p class="eyebrow">STEP 02 · THE PLAN</p><h2>Аль өдөр<br>тохиромжтой вэ? <em>♡</em></h2><p class="sub">Хоёуланд маань тухтай өдрийг сонгоё.</p><div class="days"><button class="day"><div class="art">☼<b>☺</b>✿</div><strong>Бямба</strong><small>Saturday</small></button><button class="day"><div class="art blue">☁<b>☺</b>♡</div><strong>Ням</strong><small>Sunday</small></button></div><p class="hint">сонголтоо хийж дар ♡</p><div class="nav"><button class="back">← Буцах</button><button class="primary next" disabled>Дараах →</button></div></section>
+<section class="screen" data-n="2"><p class="eyebrow">STEP 03 · NO RUSH</p><h2>Цаг хэд вэ? <em>♡</em></h2><p class="sub">Кофегоо уухад аль цаг гоё вэ?</p><div class="cup-scene"><div class="bigcup">☕</div><span>〰</span><b>♡</b><div class="tiny-person">☺</div></div><div class="times"><button>☼<br>10:00</button><button>☼<br>12:00</button><button>☼<br>14:00</button><button>☼<br>16:00</button></div><div class="nav"><button class="back">← Буцах</button><button class="primary next" disabled>Дараах →</button></div></section>
+<section class="screen" data-n="3"><p class="eyebrow">STEP 04 · IT'S A PLAN</p><h2>Ингэж тохирлоо! <em>♡</em></h2><p class="sub">За тэгвэл уулзах нь дээ. ☺</p><div class="note"><small>OUR LITTLE PLAN</small><div>▦　Өдөр <strong id="dayOut">Бямба</strong></div><div>◷　Цаг <strong id="timeOut">14:00</strong></div><div>☕　Кофе + сайхан яриа</div><p>☺　♡　☕</p></div><div class="celebrate">＼(＾▽＾)／<span>♥ ✦ ♡ ✧</span></div><div class="nav vertical"><button class="primary" id="confirm">Товлох ♡</button><button class="back">Өөрчлөх</button></div></section>
+<section class="screen final" data-n="4"><div class="sun"></div><p class="eyebrow">UNTIL THEN…</p><h2 class="see">See you<br>soon! <em>♡</em></h2><p class="sub">Сайн кофе, сайхан яриа,<br>сайхан мөчүүд. ♡</p><div class="finalscene"><div class="cloud c1"></div><div class="cloud c2"></div><div class="birds">⌁　⌁</div><div class="bench"></div><div class="sit s1">☺</div><div class="sit s2">☺</div><div class="cat">🐈</div><span class="orbit o1">♡</span><span class="orbit o2">♥</span></div><p class="hint" id="finalDetail">Бямба · 14:00</p><button class="back restart" id="restart">Дахиад үзэх ↻</button></section>
+<footer><span id="progress"></span></footer></main><div id="toast"></div><script src="script.js"></script></body></html>

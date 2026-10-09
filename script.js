@@ -1,19 +1,15 @@
-const pages=[...document.querySelectorAll('.page')];
-const bar=document.getElementById('progressBar');let chosenDay=null,chosenActivity=null;
-function go(n){pages.forEach(p=>p.classList.remove('active'));document.getElementById('page'+n).classList.add('active');bar.style.width=(n/5*100)+'%';if(n===5)leaves();}
-document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>go(+b.dataset.next));
-
-let tries=0;const no=document.getElementById('no'),note=document.getElementById('noNote');
-const texts=['Жаахан бод доо 😌','Дахиад нэг оролдъё?','Энэ чинь хөөрхөн санаа шүү 👀','Сүүлчийн боломж ♡'];
-no.onclick=()=>{if(tries>=4)return;tries++;note.textContent=texts[tries-1];let x=(Math.random()>.5?1:-1)*(15+Math.random()*55),y=(Math.random()>.5?1:-1)*(6+Math.random()*25);no.animate([{transform:'none'},{transform:`translate(${x}px,${y}px) rotate(6deg)`},{transform:`translate(${x*.5}px,${y*.4}px)`}],{duration:480});if(tries===4)setTimeout(()=>{no.textContent='Үгүй 🔒';no.disabled=true},450)};
-document.getElementById('yes').onclick=()=>{burst('♡');setTimeout(()=>go(3),300)};
-
-document.querySelectorAll('.dates button[data-day]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.dates button').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chosenDay=b.dataset.day;document.getElementById('dayValue').textContent=chosenDay+' · '+b.textContent;document.getElementById('dayNext').disabled=false});
-document.getElementById('dayNext').onclick=()=>go(4);
-
-document.querySelectorAll('.activity').forEach(b=>b.onclick=()=>{document.querySelectorAll('.activity').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chosenActivity={time:b.dataset.time,title:b.dataset.title};document.getElementById('activityValue').textContent=chosenActivity.title+' · '+chosenActivity.time;document.getElementById('finish').disabled=false});
-document.getElementById('finish').onclick=()=>{document.getElementById('finalDay').textContent=chosenDay;document.getElementById('finalTime').textContent=chosenActivity.time;document.getElementById('finalActivity').textContent=chosenActivity.title;burst('✦');go(5)};
-
-function burst(s){for(let i=0;i<16;i++){let e=document.createElement('span');e.textContent=s;Object.assign(e.style,{position:'fixed',zIndex:99,left:Math.random()*100+'%',top:55+Math.random()*15+'%',color:'#ffe7a6',fontSize:12+Math.random()*22+'px'});document.body.appendChild(e);e.animate([{transform:'scale(.3)',opacity:0},{transform:'translateY(-70px) scale(1.2)',opacity:1},{transform:'translateY(-250px) rotate(160deg)',opacity:0}],{duration:1400+Math.random()*700});setTimeout(()=>e.remove(),2200)}}
-function leaves(){let box=document.getElementById('leaves');box.innerHTML='';for(let i=0;i<18;i++){let e=document.createElement('span');e.textContent=Math.random()>.35?'🍂':'✦';Object.assign(e.style,{position:'absolute',left:Math.random()*100+'%',top:'-30px',fontSize:12+Math.random()*15+'px',animation:`leafFall ${4+Math.random()*4}s linear ${Math.random()*3}s infinite`});box.appendChild(e)}}
-const st=document.createElement('style');st.textContent='@keyframes leafFall{to{transform:translate(70px,105vh) rotate(320deg);opacity:0}}';document.head.appendChild(st);
+(()=>{const screens=[...document.querySelectorAll('.screen')],counter=document.querySelector('#counter'),progress=document.querySelector('#progress'),no=document.querySelector('#no'),hint=document.querySelector('#hint'),toast=document.querySelector('#toast');let page=0,day='',time='',tries=0,timer;
+function notice(s){toast.textContent=s;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),1700)}
+function hearts(x,y,n=7){const chars=['♡','♥','✦','✧'];for(let i=0;i<n;i++){let e=document.createElement('i');e.className='heart-pop';e.textContent=chars[Math.random()*chars.length|0];e.style.left=x+(Math.random()-.5)*90+'px';e.style.top=y+(Math.random()-.5)*20+'px';e.style.animationDelay=Math.random()*.15+'s';document.body.append(e);setTimeout(()=>e.remove(),900)}}
+function go(n){screens[page].classList.remove('active');page=n;screens[page].classList.add('active');counter.textContent='0'+(n+1)+' / 05';progress.style.width=(n+1)*20+'%';if(n===3){document.querySelector('#dayOut').textContent=day;document.querySelector('#timeOut').textContent=time}if(n===4){document.querySelector('#finalDetail').textContent=day+' · '+time;let r=document.querySelector('.see').getBoundingClientRect();hearts(r.left+r.width/2,r.top+r.height/2,12)}}
+document.querySelector('#yes').onclick=e=>{hearts(e.clientX,e.clientY,10);notice('Yay! Кофены төлөвлөгөө эхэллээ ☕');setTimeout(()=>go(1),300)};
+function escapeNo(){if(tries>=4)return;tries++;let r=no.getBoundingClientRect(),pad=14,x=pad+Math.random()*Math.max(1,innerWidth-r.width-pad*2),y=pad+Math.random()*Math.max(1,innerHeight-r.height-pad*2);no.style.position='fixed';no.style.left=x+'px';no.style.top=y+'px';no.style.zIndex=20;no.style.transform='rotate('+(Math.random()*16-8)+'deg)';hint.textContent=['Өө, бараг баригдлаа! 😳','Хөөе, ганц кофе шүү дээ ☕','Ингээд л зугтаад байх уу? 😂','За за, “Үгүй” амралтаа авлаа ♡'][tries-1];if(tries===4){no.textContent='За тэгье ♡';no.className='primary';no.style.position='';no.style.left='';no.style.top='';no.style.transform='';no.style.zIndex='';no.onclick=()=>go(1);hint.textContent='за, ингээд кофе уухаар боллоо ♡';notice('Би мэдэж байсан юм аа 😌')} }
+no.onclick=escapeNo;no.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&tries<4)escapeNo()});
+document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{day=b.querySelector('strong').textContent;document.querySelectorAll('.day').forEach(x=>x.classList.toggle('selected',x===b));document.querySelector('[data-n="1"] .next').disabled=false;let r=b.getBoundingClientRect();hearts(r.left+r.width/2,r.top+20,4)});
+document.querySelectorAll('.times button').forEach(b=>b.onclick=()=>{time=b.textContent.trim().split('\n').pop();document.querySelectorAll('.times button').forEach(x=>x.classList.toggle('selected',x===b));document.querySelector('[data-n="2"] .next').disabled=false;let r=b.getBoundingClientRect();hearts(r.left+r.width/2,r.top+10,3)});
+document.querySelector('[data-n="1"] .next').onclick=()=>day&&go(2);document.querySelector('[data-n="2"] .next').onclick=()=>time&&go(3);
+document.querySelectorAll('.back').forEach(b=>{if(b.id!=='restart')b.onclick=()=>go(Math.max(0,page-1))});
+document.querySelector('#confirm').onclick=e=>{hearts(e.clientX,e.clientY,12);notice('Товлогдлоо! See you soon ♡');setTimeout(()=>go(4),450)};
+document.querySelector('#restart').onclick=()=>{day='';time='';tries=0;no.textContent='Үгүй';no.className='';no.removeAttribute('style');no.onclick=escapeNo;hint.textContent='нэг кофе л шүү дээ… 👀';document.querySelectorAll('.day,.times button').forEach(b=>b.classList.remove('selected'));document.querySelectorAll('.next').forEach(b=>b.disabled=true);go(0)};
+progress.style.width='20%';
+})();
