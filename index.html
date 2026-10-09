@@ -1,12 +1,116 @@
 <!doctype html>
-<html lang="mn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f1e2"><title>Coffee Date ♡</title><link rel="stylesheet" href="style.css"></head>
-<body><main class="app">
-<header><span>☕ little coffee date</span><span id="counter">01 / 05</span></header>
-<section class="screen active" data-n="0"><i class="flower">✿</i><p class="eyebrow">A LITTLE INVITATION</p><h1>Кофе уух<br>уу? <em>♡</em></h1><p class="sub">Сайн кофе, сайхан яриа,<br>жаахан өөр тухтай цаг.</p>
-<div class="scene cafe"><div class="sun"></div><div class="plant">❧</div><div class="person p1"><b>•ᴗ•</b><i></i><span></span></div><div class="table">☕<small>〰</small></div><div class="person p2"><b>•ᴗ•</b><i></i><span></span></div><div class="cat">🐈</div><label>♡</label></div>
-<div class="buttons"><button class="primary" id="yes">Тэгье ♡</button><button id="no">Үгүй</button></div><p class="hint" id="hint">нэг кофе л шүү дээ… 👀</p></section>
-<section class="screen" data-n="1"><i class="flower">✿</i><p class="eyebrow">STEP 02 · THE PLAN</p><h2>Аль өдөр<br>тохиромжтой вэ? <em>♡</em></h2><p class="sub">Хоёуланд маань тухтай өдрийг сонгоё.</p><div class="days"><button class="day"><div class="art">☼<b>☺</b>✿</div><strong>Бямба</strong><small>Saturday</small></button><button class="day"><div class="art blue">☁<b>☺</b>♡</div><strong>Ням</strong><small>Sunday</small></button></div><p class="hint">сонголтоо хийж дар ♡</p><div class="nav"><button class="back">← Буцах</button><button class="primary next" disabled>Дараах →</button></div></section>
-<section class="screen" data-n="2"><p class="eyebrow">STEP 03 · NO RUSH</p><h2>Цаг хэд вэ? <em>♡</em></h2><p class="sub">Кофегоо уухад аль цаг гоё вэ?</p><div class="cup-scene"><div class="bigcup">☕</div><span>〰</span><b>♡</b><div class="tiny-person">☺</div></div><div class="times"><button>☼<br>10:00</button><button>☼<br>12:00</button><button>☼<br>14:00</button><button>☼<br>16:00</button></div><div class="nav"><button class="back">← Буцах</button><button class="primary next" disabled>Дараах →</button></div></section>
-<section class="screen" data-n="3"><p class="eyebrow">STEP 04 · IT'S A PLAN</p><h2>Ингэж тохирлоо! <em>♡</em></h2><p class="sub">За тэгвэл уулзах нь дээ. ☺</p><div class="note"><small>OUR LITTLE PLAN</small><div>▦　Өдөр <strong id="dayOut">Бямба</strong></div><div>◷　Цаг <strong id="timeOut">14:00</strong></div><div>☕　Кофе + сайхан яриа</div><p>☺　♡　☕</p></div><div class="celebrate">＼(＾▽＾)／<span>♥ ✦ ♡ ✧</span></div><div class="nav vertical"><button class="primary" id="confirm">Товлох ♡</button><button class="back">Өөрчлөх</button></div></section>
-<section class="screen final" data-n="4"><div class="sun"></div><p class="eyebrow">UNTIL THEN…</p><h2 class="see">See you<br>soon! <em>♡</em></h2><p class="sub">Сайн кофе, сайхан яриа,<br>сайхан мөчүүд. ♡</p><div class="finalscene"><div class="cloud c1"></div><div class="cloud c2"></div><div class="birds">⌁　⌁</div><div class="bench"></div><div class="sit s1">☺</div><div class="sit s2">☺</div><div class="cat">🐈</div><span class="orbit o1">♡</span><span class="orbit o2">♥</span></div><p class="hint" id="finalDetail">Бямба · 14:00</p><button class="back restart" id="restart">Дахиад үзэх ↻</button></section>
-<footer><span id="progress"></span></footer></main><div id="toast"></div><script src="script.js"></script></body></html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8f0df">
+<title>Coffee Date ♡</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <div class="paper-tape tape-top"></div>
+  <header class="header"><span>☕ little coffee date</span><span id="step">01 / 05</span></header>
+
+  <section class="page active" data-page="0">
+    <span class="doodle flower f1">✿</span><span class="doodle spark sp1">✧</span>
+    <span class="awning"></span><span class="lamp">♧</span>
+    <p class="eyebrow">A LITTLE INVITATION</p>
+    <h1>Кофе<br>уух уу? <em>♡</em></h1>
+    <p class="subtitle">Сайн кофе, сайхан яриа,<br>жаахан тухтай цаг.</p>
+    <div class="intro-art">
+      <div class="window"><span class="sun"></span><span class="seagull">⌁</span></div>
+      <div class="plant pot"><span>❧</span></div>
+      <svg class="people-table" viewBox="0 0 310 190" role="img" aria-label="Two hand-drawn stick people having coffee">
+        <g class="stick left-person" stroke="#292820" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="#fffaf0">
+          <circle cx="76" cy="40" r="26"/><path d="M66 39q-3 -4 -6 0 M84 39q-3 -4 -6 0" fill="none"/><path d="M69 51q7 7 14 0" fill="none" stroke="#d9857b"/>
+          <path d="M76 66 L78 116 M77 82 L105 101 M77 84 L56 102 M78 116 L57 151 M78 116 L98 150" fill="none"/>
+        </g>
+        <g class="stick right-person" stroke="#292820" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="#fffaf0">
+          <circle cx="235" cy="40" r="26"/><path d="M225 39q-3 -4 -6 0 M243 39q-3 -4 -6 0" fill="none"/><path d="M228 51q7 7 14 0" fill="none" stroke="#d9857b"/>
+          <path d="M235 66 L233 116 M233 83 L207 101 M233 84 L255 102 M233 116 L214 151 M233 116 L254 150" fill="none"/>
+          <path d="M216 19q19 -20 37 0" fill="none"/>
+        </g>
+        <path class="tabletop" d="M34 112 Q155 103 278 112 L271 121 Q155 128 41 121Z" fill="#b48c66" stroke="#292820" stroke-width="2.5"/>
+        <path d="M53 121L58 174M258 121L252 174" stroke="#292820" stroke-width="3" fill="none"/>
+        <g class="coffee-cup"><path d="M143 87h28v21q-13 10-28 0z" fill="#fff7e8" stroke="#292820" stroke-width="2.5"/><path d="M171 91q18 -3 12 10q-3 6-12 4" fill="none" stroke="#292820" stroke-width="2.5"/><path d="M150 82q-5 -9 2 -15M160 82q-4 -10 3 -16" stroke="#b5a68c" stroke-width="2" fill="none" class="steam"/></g>
+        <g class="heart-doodle" fill="#e9a095"><path d="M121 41C106 27 94 43 121 61C148 43 136 27 121 41Z"/></g>
+      </svg>
+      <div class="cat-doodle">🐈</div><span class="tiny-heart h-a">♡</span><span class="tiny-heart h-b">♥</span>
+    </div>
+    <div class="buttons">
+      <button class="btn yes" id="yesBtn">Тэгье ♡</button>
+      <button class="btn no" id="noBtn">Үгүй</button>
+    </div>
+    <p class="hint" id="noHint">нэг кофе л шүү дээ… 👀</p>
+  </section>
+
+  <section class="page" data-page="1">
+    <span class="doodle flower f1">✿</span><span class="doodle spark sp2">♡</span>
+    <p class="eyebrow">STEP 02 · THE PLAN</p>
+    <h2>Аль өдөр<br>тохиромжтой вэ? <em>♡</em></h2>
+    <p class="subtitle">Хоёуланд маань тухтай өдрийг сонгоё.</p>
+    <div class="day-list">
+      <button class="day-card" data-day="Бямба">
+        <div class="card-picture saturday"><span class="sun-icon">☼</span><svg viewBox="0 0 120 100"><g stroke="#292820" stroke-width="2.5" stroke-linecap="round" fill="#fffaf0"><circle cx="54" cy="25" r="14"/><path d="M49 25h1m9 0h1M50 31q5 4 10 0" fill="none"/><path d="M54 39v25m0 -17L39 58m15 -11 15 6m-15 17L42 85m12 -15 17 14" fill="none"/></g><path d="M70 45q12 -18 18 -4q-1 13 -18 4" fill="#e9a095" stroke="#292820" stroke-width="2"/></svg><span class="flower-icon">✿</span></div>
+        <span class="day-name">Бямба</span><small>Saturday</small>
+      </button>
+      <button class="day-card" data-day="Ням">
+        <div class="card-picture sunday"><span class="cloud-icon">☁</span><svg viewBox="0 0 120 100"><g stroke="#292820" stroke-width="2.5" stroke-linecap="round" fill="#fffaf0"><circle cx="59" cy="26" r="14"/><path d="M54 25h1m9 0h1M55 32q5 4 10 0" fill="none"/><path d="M59 40v25m0 -17L42 56m17 -8 15 10m-15 7L44 85m15 -20 17 18" fill="none"/></g><path d="M31 75q7 -16 15 0q8 -16 15 0" fill="none" stroke="#e9a095" stroke-width="3"/></svg><span class="flower-icon">♡</span></div>
+        <span class="day-name">Ням</span><small>Sunday</small>
+      </button>
+    </div>
+    <div class="note-label">сонголтоо хийж дар ♡</div>
+    <div class="bottom-nav"><button class="btn back" data-back>← Буцах</button><button class="btn yes next" disabled>Дараах →</button></div>
+  </section>
+
+  <section class="page" data-page="2">
+    <span class="doodle flower f1">✿</span><span class="doodle spark sp1">✧</span>
+    <p class="eyebrow">STEP 03 · COFFEE TIME</p>
+    <h2>Цаг хэд вэ? <em>♡</em></h2>
+    <p class="subtitle">Кофегоо уухад аль цаг гоё вэ?</p>
+    <div class="cup-illustration"><span class="steam s1">〰</span><span class="steam s2">〰</span><div class="giant-cup">☕</div><span class="cup-heart">♡</span><div class="tiny-cat">🐈</div></div>
+    <div class="time-grid">
+      <button class="time-card" data-time="10:00"><span>☼</span>10:00</button>
+      <button class="time-card" data-time="12:00"><span>☼</span>12:00</button>
+      <button class="time-card" data-time="14:00"><span>☼</span>14:00</button>
+      <button class="time-card" data-time="16:00"><span>☼</span>16:00</button>
+    </div>
+    <div class="bottom-nav"><button class="btn back" data-back>← Буцах</button><button class="btn yes next" disabled>Дараах →</button></div>
+  </section>
+
+  <section class="page" data-page="3">
+    <span class="doodle spark sp1">✧</span><span class="doodle flower f1">✿</span>
+    <p class="eyebrow">STEP 04 · IT'S A PLAN</p>
+    <h2>Ингэж тохирлоо! <em>♡</em></h2>
+    <div class="confirm-paper">
+      <div class="tape-small"></div><p class="paper-title">Our little plan</p>
+      <div class="detail"><span>▦</span><div><small>Өдөр</small><strong id="chosenDay">Бямба</strong></div></div>
+      <div class="detail"><span>◷</span><div><small>Цаг</small><strong id="chosenTime">14:00</strong></div></div>
+      <div class="detail"><span>☕</span><div><small>Төлөвлөгөө</small><strong>Кофе, сайхан яриа</strong></div></div>
+      <div class="scribble">☺　♡　✦</div>
+    </div>
+    <div class="happy-stickman"><span class="happy-face">•ᴗ•</span><span class="happy-body"></span><span class="happy-arm a1"></span><span class="happy-arm a2"></span><span class="happy-leg l1"></span><span class="happy-leg l2"></span><span class="confetti cf1">♥</span><span class="confetti cf2">✧</span><span class="confetti cf3">♡</span></div>
+    <div class="bottom-nav vertical"><button class="btn yes" id="confirmBtn">Товлох ♡</button><button class="btn back" data-back>Өөрчлөх</button></div>
+  </section>
+
+  <section class="page final-page" data-page="4">
+    <div class="final-sun"></div><span class="doodle spark sp2">✧</span>
+    <p class="eyebrow">UNTIL THEN…</p>
+    <h2 class="see-you">See you<br>soon! <em>♡</em></h2>
+    <div class="final-landscape">
+      <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><span class="birds">⌁　⌁</span>
+      <div class="coast-house">⌂</div><div class="bench"></div>
+      <div class="final-person person-a"><b>•ᴗ•</b><i></i><span></span></div>
+      <div class="final-person person-b"><b>•ᴗ•</b><i></i><span></span></div>
+      <div class="cat-final">🐈</div><span class="float-heart fh1">♡</span><span class="float-heart fh2">♥</span>
+    </div>
+    <p class="final-copy">Сайн кофе, сайхан яриа,<br>сайхан мөчүүд. ♡</p>
+    <p class="final-date" id="finalDate">Бямба · 14:00</p>
+    <button class="btn back restart" id="restartBtn">Дахиад үзэх ↻</button>
+  </section>
+  <footer><span id="progress"></span></footer>
+</main>
+<div class="toast" id="toast" aria-live="polite"></div>
+<script src="script.js"></script>
+</body></html>
